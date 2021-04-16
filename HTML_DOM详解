@@ -1,0 +1,156 @@
+HTML DOM 文档对象是您的网页中所有其他对象的拥有者。
+（访问HTML页面中的任何元素，从访问Document对象开始）
+
+
+  浅谈Element：Element 对象表示 HTML 元素。	
+   1.文档本身是文档节点;
+   2.所有 HTML 元素是元素节点;
+   3.所有 HTML 属性是属性节点;
+   4.HTML 元素内的文本是文本节点;
+   5.注释是注释节点。
+
+
+一、查找 HTML 元素
+
+1.通过 id 查找 HTML 元素
+  var myElement = document.getElementById("myid");
+
+2.通过标签名查找 HTML 元素
+  var x = document.getElementsByTagName("myTagName");
+
+3.通过类名查找 HTML 元素
+  var x = document.getElementsByClassName("myClassName");
+
+（延伸的方法）
+4.通过 CSS 选择器查找 HTML 元素
+   返回 class="myClassName" 的所有 <x> 元素列表：
+  var x = document.querySelectorAll("x.myClassName");
+
+5.通过 HTML 对象集合查找 HTML 元素
+  
+   var x = document.forms["frm1"];
+   var text = "";
+   var i;
+   for (i = 0; i < x.length; i++) {
+       text += x.elements[i].value + "<br>";
+    }
+   document.getElementById("demo").innerHTML = text;
+
+
+
+
+二、添加和删除元素
+
+1.创建 HTML 元素
+  document.createElement(element);
+
+2.删除 HTML 元素
+  document.removeChild(element);
+
+3.添加 HTML 元素
+  document.appendChild(element);
+
+4.替换 HTML 元素
+  document.replaceChild(element);
+
+5.写入 HTML 输出流	
+  document.write(text);
+
+  
+
+三、改变 HTML 元素
+
+1.改变元素的 innerHTML
+  element.innerHTML = new html content;
+
+2.改变 HTML 元素的属性值
+  element.attribute = new value;
+
+3.改变 HTML 元素的属性值
+  element.setAttribute(attribute, value);
+
+4.改变 HTML 元素的样式
+  element.style.property = new style;	
+
+四、添加事件处理程序
+  向 onclick 事件添加事件处理程序：
+ document.getElementById(id).onclick = function(){code};
+
+五、查找 HTML 对象
+
+1.返回拥有 name 属性的所有 <a> 元素
+  document.anchors	
+
+2.返回所有 <applet> 元素（HTML5 不建议使用）
+  document.applets		
+
+3.返回文档的绝对基准 URI
+  document.baseURI
+
+4.返回 <body> 元素
+  document.body
+
+5.返回文档的 cookie
+  document.cookie	
+
+6.返回文档的 doctype
+  document.doctype
+
+7.返回 <html> 元素
+  document.documentElement
+
+8.返回浏览器使用的模式
+  document.documentMode
+
+9.返回文档的 URI
+  document.documentURI
+
+10.返回文档服务器的域名
+  document.domain	
+
+11.返回所有 <embed> 元素
+  document.embeds	
+
+12.返回所有 <form> 元素
+  document.forms
+
+13.返回 <head> 元素
+  document.head
+
+14.返回所有 <img> 元素
+  document.images
+15.返回 DOM 实现
+  document.implementation
+16.返回文档的编码（字符集）
+  document.inputEncoding
+
+17.返回文档更新的日期和时间
+  document.lastModified
+
+18.返回拥有 href 属性的所有 <area> 和 <a> 元素
+  document.links	
+
+19.返回文档的（加载）状态
+  document.readyState	
+
+20.返回引用的 URI（链接文档）
+  document.referrer
+
+21.返回所有 <script> 元素
+  document.scripts
+
+22.返回是否强制执行错误检查
+  document.strictErrorChecking
+
+23.返回 <title> 元素
+  document.title	
+
+24.返回文档的完整 URL
+  document.URL
+
+
+
+	
+
+
+
