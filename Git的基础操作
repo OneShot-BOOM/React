@@ -1,0 +1,11 @@
+同一个 Github 账号之多台电脑间协同开发：
+1. 先生成 key,命令是    
+ssh-keygen -t rsa -C "注册 Github 的邮箱" 
+
+2. 将产生的公钥复制到 Github 的 SSH keys 中，步骤如下：
+打开 Github，找到 Settings, 点击 SSH and GPG keys,点击New SSH key,粘贴 
+
+3. 将仓库克隆到本地 ( git clone xxx ) 
+4. 可能需要配置账号以及输入密码 
+git config --global user.email "注册用的邮箱" 
+git config --global user.name "用户名"

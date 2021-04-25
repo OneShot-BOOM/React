@@ -10,10 +10,28 @@
 
     <script>
         let arr1 = [1, 3, 5, 7, 9];
-        let arr2 = [1, 3, 5, 7, 9];
+        let arr2 = [2, 4, 6, 8, 10];
+        console.log(...arr1);//展开一个数组
 
+        let arr3 = [...arr1, ...arr2];
+        console.log(arr3);//连接数组
 
+        //在函数中使用 函数传参
+        function sum(...numbers) {
 
+            return numbers.reduce((preValue, currentValue) => {
+                return preValue + currentValue
+            });
+        }
+        console.log(sum(1, 2, 3, 4));
+
+        //构造字面量对象时使用展开语法
+        let p = { name: '老刘', age: 30, sex: '女' };
+        let p2 = { ...p };
+        //console.log(...p);//展开运算符不能展开对象
+        console.log(p2);
+        //合并
+        let p3 = { ...p, name: 'jack', address: '地球' }
     </script>
 </body>
 
