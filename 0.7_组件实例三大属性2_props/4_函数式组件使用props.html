@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3_props的简写方式</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 （全局就会多React）-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+
+    <!-- 引入react_dom 用于支持react操作dom （全局就会多ReactDOM）-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 引入prop-types用于对组件标签属性进行限制  （全局就会多PropTypes） -->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+
+    <script type="text/babel">
+
+        //1.创建组件
+        function Person(props) {
+            const { name, age, sex } = this.props;
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{sex}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            sex: PropTypes.string,
+            age: PropTypes.number,
+            speak: PropTypes.func,
+
+        }
+        Person.defaultProps = {
+            sex: '不男不女',
+            age: 18
+        }
+
+        //2.渲染组件到页面
+        ReactDOM.render(<Person name="jerry" />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
