@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 （全局就会多React）-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+
+    <!-- 引入react_dom 用于支持react操作dom （全局就会多ReactDOM）-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //现用现取
+
+        //1.创建组件
+        class Login extends React.Component {
+
+            handleSubmit = (event) => {
+                event.preventDefault();//阻止默认事件
+                const { username, password } = this;
+                alert(`你输入的用户名是：${username.value}，你输入的密码是：${password.value}`);
+            }
+
+            render() {
+                return (
+                    <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                        用户名：<input ref={c => this.username = c} type="text" name="username"></input>
+                        密码：<input ref={c => this.password = c} type="password" name="password"></input>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+
+        //渲染组件
+        ReactDOM.render(<Login />, document.getElementById('test'));
+
+    </script>
+</body>
+
+</html>
