@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>1_非受控组件</title>
+    <title>2_受控组件</title>
 </head>
 
 <body>
@@ -20,23 +20,39 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-        //现用现取
-
         //1.创建组件
         class Login extends React.Component {
+            
+            //初始化状态
+            state = {
+                username: '',
+                password: ''
+            }
+
+            //保存用户名到状态中
+            saveUsername = (event) => {
+                console.log('YAO', event.target.value)
+                this.setState({ username: event.target.value });
+            }
+
+            //保存密码到状态中
+            savePassword = (event) => {
+                console.log('YAO', event.target.value)
+                this.setState({ password: event.target.value });
+            }
 
             //表单提交的回调
             handleSubmit = (event) => {
                 event.preventDefault();//阻止默认事件
-                const { username, password } = this;
-                alert(`你输入的用户名是：${username.value}，你输入的密码是：${password.value}`);
+                const { username, password } = this.state;
+                alert(`你输入的用户名是：${username}，你输入的密码是：${password}`);
             }
 
             render() {
                 return (
                     <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
-                        用户名：<input ref={c => this.username = c} type="text" name="username"></input>
-                        密码：<input ref={c => this.password = c} type="password" name="password"></input>
+                        用户名：<input onChange={this.saveUsername} type="text" name="username"></input>
+                        密码：<input onChange={this.savePassword} type="password" name="password"></input>
                         <button>登录</button>
                     </form>
                 )
