@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2_不用柯里化的实现</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 （全局就会多React）-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+
+    <!-- 引入react_dom 用于支持react操作dom （全局就会多ReactDOM）-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //1.创建组件
+        class Login extends React.Component {
+
+            //初始化状态
+            state = {
+                username: '',//用户名
+                password: ''//密码
+            }
+
+            //保存表单数据到状态中
+            saveFormData = (dataType, event) => {
+                this.setState({ [dataType]: event.target.value })
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();//阻止默认事件
+                const { username, password } = this.state;
+                alert(`你输入的用户名是：${username}，你输入的密码是：${password}`);
+            }
+
+            render() {
+                return (
+                    <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                        用户名：<input onChange={event => this.saveFormData('username', event)} type="text" name="username"></input>
+                        密码：<input onChange={event => this.saveFormData('password', event)} type="password" name="password"></input>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+
+        //渲染组件
+        ReactDOM.render(<Login />, document.getElementById('test'));
+
+    </script>
+</body>
+
+</html>
